@@ -1,0 +1,19 @@
+{
+  "name": "@time-loop/magination",
+  "description": "An opinionated framework to build cursor-based pagination over multiple streams of hits",
+  "version": "2.10.280",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc.sh",
+    "dev": "tight-loop.sh tsc.sh --watch",
+    "lint": "lint.sh",
+    "test": "test.sh"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "uniqid": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/uniqid": "^4.1.3"
+  }
+}
