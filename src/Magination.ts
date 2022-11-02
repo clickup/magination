@@ -1,5 +1,6 @@
 import flatten from "lodash/flatten";
 import keyBy from "lodash/keyBy";
+import last from "lodash/last";
 import mapValues from "lodash/mapValues";
 import type Cache from "./Cache";
 import type Hasher from "./Hasher";
@@ -57,15 +58,17 @@ export default class Magination<
    * - If null is passed as cursor, starts from the beginning.
    * - If null is returned in cursor, it means that there are no more pages left
    *   to load, i.e. it's an end of the stream.
+   * - It's guaranteed that the very last source in the list always yields a
+   *   page, even if it's empty (i.e. load() yields at least one page).
    */
   async *load({
     cache,
-    cursor,
     hasher,
+    cursor,
   }: {
     cache: Cache;
-    cursor: string | null;
     hasher: Hasher<THit>;
+    cursor: string | null;
   }): AsyncGenerator<Page<THit> & { source: TSource }> {
     let [slotKey, num] = parseCursor(cursor);
 
@@ -92,7 +95,7 @@ export default class Magination<
       yield {
         hits: [],
         cursor: null,
-        source: Object.values(this.sources)[0],
+        source: last(Object.values(this.sources))!,
       };
       return;
     }
@@ -145,12 +148,15 @@ export default class Magination<
         }
       }
 
-      slot.frames[num] = { hitHashes: hitHashes, cursors };
+      slot.frames[num] = {
+        hitHashes,
+        cursors: { ...cursors },
+      };
       await cache.write(slotKey, slot);
 
       if (hits.length > 0 || i === promises.length - 1) {
         yield {
-          hits: hits,
+          hits,
           cursor:
             Object.keys(cursors).length > 0 ? buildCursor(slotKey, num) : null,
           source: this.sources[name],

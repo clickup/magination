@@ -8,7 +8,8 @@ export function mockCache(): Database {
   const store = new Map<string, object>();
   return {
     read: async (key) => store.get(key) ?? null,
-    write: async (key, value) => store.set(key, value),
+    write: async (key, value) =>
+      store.set(key, JSON.parse(JSON.stringify(value))),
     store,
   } as Database;
 }
