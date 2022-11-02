@@ -98,7 +98,7 @@ export default class Source<THit> {
     // (i.e. we may still have less than 1 page of results returned, although
     // there is a non-null cursor).
     return {
-      hits: hits,
+      hits,
       cursor:
         pos < slot.hits.length || slot.cursor !== null
           ? buildCursor(slotKey, pos)

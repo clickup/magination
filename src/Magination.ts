@@ -28,6 +28,10 @@ export default class Magination<
   private sources;
 
   constructor(sources: readonly TSource[]) {
+    if (sources.length === 0) {
+      throw Error("Magination requires at least one Source to be passed");
+    }
+
     this.sources = keyBy(sources, (source) => source.name);
   }
 

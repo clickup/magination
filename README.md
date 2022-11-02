@@ -41,7 +41,7 @@ source3:   [q, r]        |  [s, t]
 ---------------------------------------------------> time
 
 1. Magination.load():
-   -> [b,m,n][a,b,c][q,r] + cursor
+   -> [b,m,n][a,c][q,r] + cursor
 2. Magination.load(cursor):
    -> [d,e,f][s,t] + cursor=null
 ```
