@@ -1,7 +1,7 @@
 {
   "name": "@time-loop/magination",
   "description": "An opinionated framework to build cursor-based pagination over multiple streams of hits",
-  "version": "2.10.290",
+  "version": "2.10.291",
   "license": "MIT",
   "scripts": {
     "build": "tsc.sh",
