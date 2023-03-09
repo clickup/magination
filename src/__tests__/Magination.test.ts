@@ -37,6 +37,7 @@ test("empty sources", async () => {
     value: {
       hits: [],
       cursor: null,
+      prevCursor: null,
       source: emptySource2,
     },
     done: false,
@@ -53,6 +54,7 @@ test("empty and non-empty sources", async () => {
     value: {
       hits: ["c", "a"],
       cursor: expect.stringMatching(/./),
+      prevCursor: null,
       source: source1,
     },
     done: false,
@@ -65,6 +67,7 @@ test("empty and non-empty sources", async () => {
     value: {
       hits: ["d"],
       cursor: null,
+      prevCursor: expect.stringMatching(/./),
       source: source1,
     },
     done: false,
@@ -81,6 +84,7 @@ test("two sources without interruption", async () => {
     value: {
       hits: ["c", "a"],
       cursor: expect.stringMatching(/./),
+      prevCursor: null,
       source: source1,
     },
     done: false,
@@ -90,6 +94,7 @@ test("two sources without interruption", async () => {
     value: {
       hits: ["b"],
       cursor: expect.stringMatching(/./),
+      prevCursor: null,
       source: source2,
     },
     done: false,
@@ -102,6 +107,7 @@ test("two sources without interruption", async () => {
     value: {
       hits: ["d"],
       cursor: expect.stringMatching(/./),
+      prevCursor: expect.stringMatching(/./),
       source: source1,
     },
     done: false,
@@ -111,6 +117,7 @@ test("two sources without interruption", async () => {
     value: {
       hits: ["e"],
       cursor: null,
+      prevCursor: expect.stringMatching(/./),
       source: source2,
     },
     done: false,
@@ -126,7 +133,8 @@ test("two sources with interruption", async () => {
   expect(page1).toEqual({
     value: {
       hits: ["c", "a"],
-      cursor: expect.stringMatching(/./),
+      cursor: expect.stringMatching(/1$/),
+      prevCursor: null,
       source: source1,
     },
     done: false,
@@ -137,7 +145,8 @@ test("two sources with interruption", async () => {
   expect(page2).toEqual({
     value: {
       hits: ["b"],
-      cursor: expect.stringMatching(/./),
+      cursor: expect.stringMatching(/2$/),
+      prevCursor: null,
       source: source2,
     },
     done: false,
@@ -147,7 +156,8 @@ test("two sources with interruption", async () => {
   expect(page3).toEqual({
     value: {
       hits: ["d"],
-      cursor: expect.stringMatching(/./),
+      cursor: expect.stringMatching(/3$/),
+      prevCursor: expect.stringMatching(/1$/),
       source: source1,
     },
     done: false,
@@ -160,6 +170,7 @@ test("two sources with interruption", async () => {
     value: {
       hits: ["e"],
       cursor: null,
+      prevCursor: expect.stringMatching(/2$/),
       source: source2,
     },
     done: false,
@@ -175,7 +186,8 @@ test("two sources with interruption", async () => {
   expect(page3Again).toEqual({
     value: {
       hits: ["d"],
-      cursor: expect.stringMatching(/./),
+      cursor: expect.stringMatching(/3$/),
+      prevCursor: expect.stringMatching(/1$/),
       source: source1,
     },
     done: false,
@@ -187,6 +199,7 @@ test("two sources with interruption", async () => {
     value: {
       hits: ["e"],
       cursor: null,
+      prevCursor: expect.stringMatching(/2$/),
       source: source2,
     },
     done: false,

@@ -1,6 +1,6 @@
 import uniqid from "uniqid";
 
-const CURSOR_SEP = ":";
+const CURSOR_SEP = "-"; // url-safe (thus, better than ":")
 
 export function createCursor(): string {
   return uniqid();

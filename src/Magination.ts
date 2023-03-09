@@ -73,7 +73,9 @@ export default class Magination<
     cache: Cache;
     hasher: Hasher<THit>;
     cursor: string | null;
-  }): AsyncGenerator<Page<THit> & { source: TSource }> {
+  }): AsyncGenerator<
+    Page<THit> & { prevCursor: string | null; source: TSource }
+  > {
     let [slotKey, num] = parseCursor(cursor);
 
     // Load cache slot with info about all sources' cursors.
@@ -99,6 +101,7 @@ export default class Magination<
       yield {
         hits: [],
         cursor: null,
+        prevCursor: num > 2 ? buildCursor(slotKey, num - 2) : null,
         source: last(Object.values(this.sources))!,
       };
       return;
@@ -163,6 +166,7 @@ export default class Magination<
           hits,
           cursor:
             Object.keys(cursors).length > 0 ? buildCursor(slotKey, num) : null,
+          prevCursor: num > 2 ? buildCursor(slotKey, num - 2) : null,
           source: this.sources[name],
         };
       }

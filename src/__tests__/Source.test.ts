@@ -58,7 +58,7 @@ it("more results than page size and there", async () => {
   });
   expect(res1).toEqual({
     hits: ["a", "b"],
-    cursor: expect.stringMatching(/^\w+:\d+$/),
+    cursor: expect.stringMatching(/^\w+-\d+$/),
   });
   const res2 = await source.load({
     cache,
@@ -88,7 +88,7 @@ it("external exclusion", async () => {
   });
   expect(res1).toEqual({
     hits: ["b", "d"],
-    cursor: expect.stringMatching(/^\w+:\d+$/),
+    cursor: expect.stringMatching(/^\w+-\d+$/),
   });
 
   const res2 = await source.load({
@@ -99,7 +99,7 @@ it("external exclusion", async () => {
   });
   expect(res2).toEqual({
     hits: ["e", "f"],
-    cursor: expect.stringMatching(/^\w+:\d+$/),
+    cursor: expect.stringMatching(/^\w+-\d+$/),
   });
 
   const res3 = await source.load({
@@ -110,7 +110,7 @@ it("external exclusion", async () => {
   });
   expect(res3).toEqual({
     hits: [],
-    cursor: expect.stringMatching(/^\w+:\d+$/),
+    cursor: expect.stringMatching(/^\w+-\d+$/),
   });
 
   const res4 = await source.load({

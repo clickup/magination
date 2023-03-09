@@ -9,4 +9,5 @@ export default interface Page<THit> {
   hits: THit[];
   cursor: string | null;
   took?: number;
+  profile?: unknown;
 }
