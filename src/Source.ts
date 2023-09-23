@@ -12,7 +12,7 @@ type SourceSlot<THit> = {
 
 export interface SourceOptions<THit> {
   pageSize: number;
-  preloadSize: number | ((offset: number) => number);
+  preloadSize?: number | ((offset: number) => number);
   search: (
     cursor: string | null,
     excludeHits: THit[],
@@ -46,10 +46,12 @@ export default class Source<THit> {
     excludeHits: THit[];
     hasher: Hasher<THit>;
   }): Promise<Page<THit>> {
-    const preloadSize =
-      typeof this.options.preloadSize !== "function"
-        ? () => this.options.preloadSize as number
-        : this.options.preloadSize;
+    const preloadSize = (offset: number): number =>
+      typeof this.options.preloadSize === "function"
+        ? this.options.preloadSize(offset)
+        : typeof this.options.preloadSize === "number"
+        ? this.options.preloadSize
+        : this.options.pageSize + 1; // +1 to efficiently detect whether we have more pages
     let [slotKey, pos] = parseCursor(cursor);
 
     // Load cache slot or create a new empty one.
