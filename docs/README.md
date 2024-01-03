@@ -1,6 +1,6 @@
 @clickup/magination / [Exports](modules.md)
 
-# @time-loop/magination: An opinionated framework to build cursor-based pagination over multiple streams of hits
+# magination: an opinionated framework to build cursor-based pagination over multiple streams of hits
 
 See also [Full API documentation](https://github.com/clickup/magination/blob/master/docs/modules.md).
 
