@@ -1,5 +1,10 @@
 "use strict";
-
 module.exports = {
-  ...require("../../jest.config.base")(),
+  roots: ["<rootDir>/src"],
+  testMatch: ["**/*.test.ts"],
+  clearMocks: true,
+  restoreMocks: true,
+  transform: {
+    "\\.ts$": "ts-jest",
+  },
 };

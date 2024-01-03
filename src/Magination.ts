@@ -4,7 +4,7 @@ import last from "lodash/last";
 import mapValues from "lodash/mapValues";
 import type Cache from "./Cache";
 import type Hasher from "./Hasher";
-import { buildCursor, parseCursor } from "./helpers";
+import { buildCursor, parseCursor } from "./internal/helpers";
 import type Page from "./Page";
 import type Source from "./Source";
 
