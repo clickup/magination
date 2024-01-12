@@ -1,6 +1,6 @@
-src
 __tests__
 .npmrc
+tsconfig.tsbuildinfo
 
 node_modules
 package-lock.json
