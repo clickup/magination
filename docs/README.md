@@ -4,6 +4,8 @@
 
 See also [Full API documentation](https://github.com/clickup/magination/blob/master/docs/modules.md).
 
+![CI run](https://github.com/clickup/magination/actions/workflows/ci.yml/badge.svg?branch=main)
+
 The problem: for some search request (e.g. search-by-keywords), we have multiple
 search queries (sources) with different performance that deliver results (hits)
 with different relevancy. We want to merge that search hits using "cursor based

@@ -1,6 +1,6 @@
 [@clickup/magination](../README.md) / [Exports](../modules.md) / SourceOptions
 
-# Interface: SourceOptions<THit\>
+# Interface: SourceOptions\<THit\>
 
 ## Type parameters
 
@@ -32,11 +32,11 @@ ___
 
 ### search
 
-• **search**: (`cursor`: ``null`` \| `string`, `excludeHits`: `THit`[], `count`: `number`) => `Promise`<[`Page`](Page.md)<`THit`\>\>
+• **search**: (`cursor`: ``null`` \| `string`, `excludeHits`: `THit`[], `count`: `number`) => `Promise`\<[`Page`](Page.md)\<`THit`\>\>
 
 #### Type declaration
 
-▸ (`cursor`, `excludeHits`, `count`): `Promise`<[`Page`](Page.md)<`THit`\>\>
+▸ (`cursor`, `excludeHits`, `count`): `Promise`\<[`Page`](Page.md)\<`THit`\>\>
 
 ##### Parameters
 
@@ -48,7 +48,7 @@ ___
 
 ##### Returns
 
-`Promise`<[`Page`](Page.md)<`THit`\>\>
+`Promise`\<[`Page`](Page.md)\<`THit`\>\>
 
 #### Defined in
 

@@ -1,6 +1,6 @@
 [@clickup/magination](../README.md) / [Exports](../modules.md) / Page
 
-# Interface: Page<THit\>
+# Interface: Page\<THit\>
 
 A chunk of hits and a cursor which allows to fetch more hits. If the cursor
 is null, there are no more hits left to fetch.

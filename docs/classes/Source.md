@@ -1,6 +1,6 @@
 [@clickup/magination](../README.md) / [Exports](../modules.md) / Source
 
-# Class: Source<THit\>
+# Class: Source\<THit\>
 
 Represents a single stream of hits subject for pagination.
 
@@ -20,7 +20,7 @@ do exclusion on the hits returned, so they are never repeated.
 
 ### constructor
 
-• **new Source**<`THit`\>(`name`, `options`)
+• **new Source**\<`THit`\>(`name`, `options`): [`Source`](Source.md)\<`THit`\>
 
 #### Type parameters
 
@@ -33,7 +33,11 @@ do exclusion on the hits returned, so they are never repeated.
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `options` | [`SourceOptions`](../interfaces/SourceOptions.md)<`THit`\> |
+| `options` | [`SourceOptions`](../interfaces/SourceOptions.md)\<`THit`\> |
+
+#### Returns
+
+[`Source`](Source.md)\<`THit`\>
 
 #### Defined in
 
@@ -53,7 +57,7 @@ do exclusion on the hits returned, so they are never repeated.
 
 ### load
 
-▸ **load**(`«destructured»`): `Promise`<[`Page`](../interfaces/Page.md)<`THit`\>\>
+▸ **load**(`«destructured»`): `Promise`\<[`Page`](../interfaces/Page.md)\<`THit`\>\>
 
 #### Parameters
 
@@ -63,11 +67,11 @@ do exclusion on the hits returned, so they are never repeated.
 | › `cache` | [`Cache`](../interfaces/Cache.md) |
 | › `cursor` | ``null`` \| `string` |
 | › `excludeHits` | `THit`[] |
-| › `hasher` | [`Hasher`](../interfaces/Hasher.md)<`THit`\> |
+| › `hasher` | [`Hasher`](../interfaces/Hasher.md)\<`THit`\> |
 
 #### Returns
 
-`Promise`<[`Page`](../interfaces/Page.md)<`THit`\>\>
+`Promise`\<[`Page`](../interfaces/Page.md)\<`THit`\>\>
 
 #### Defined in
 

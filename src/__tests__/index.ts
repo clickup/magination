@@ -24,16 +24,16 @@ export function mockSearch<THit>(...chunks: THit[][]) {
   async function search(
     cursor: string | null,
     excludeHits: THit[],
-    count: number
+    count: number,
   ): Promise<Page<THit>> {
     search.calls.push({ cursor, excludeHits, count });
     const chunk = cursor !== null ? parseInt(cursor.replace(/\D+/, "")) : 0;
     const excludeHitsStr = new Set(
-      excludeHits.map((excl) => JSON.stringify(excl))
+      excludeHits.map((excl) => JSON.stringify(excl)),
     );
     return {
       hits: (chunks[chunk] ?? []).filter(
-        (hit) => !excludeHitsStr.has(JSON.stringify(hit))
+        (hit) => !excludeHitsStr.has(JSON.stringify(hit)),
       ),
       cursor: chunk < chunks.length - 1 ? `chunk${chunk + 1}` : null,
     };

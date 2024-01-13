@@ -23,7 +23,7 @@ type MaginationSlot = {
  */
 export default class Magination<
   TSource extends Source<any>,
-  THit = TSource extends Source<infer THit> ? THit : never
+  THit = TSource extends Source<infer THit> ? THit : never,
 > {
   private sources;
 
@@ -119,12 +119,12 @@ export default class Magination<
           cursor,
           excludeHits: [],
           hasher,
-        })
-      )
+        }),
+      ),
     );
 
     const excludeHashes = new Set(
-      flatten(slot.frames.slice(0, num + 1).map((frame) => frame.hitHashes))
+      flatten(slot.frames.slice(0, num + 1).map((frame) => frame.hitHashes)),
     );
 
     // Yield pages in order of sources. On each yield, remember all of the
