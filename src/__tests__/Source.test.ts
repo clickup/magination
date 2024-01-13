@@ -12,7 +12,7 @@ test("empty results", async () => {
     search: mockSearch<string>([]),
   });
   expect(
-    await source.load({ cache, cursor: null, excludeHits: [], hasher })
+    await source.load({ cache, cursor: null, excludeHits: [], hasher }),
   ).toEqual({
     hits: [],
     cursor: null,
@@ -23,7 +23,7 @@ test("empty results", async () => {
       cursor: "abc:100",
       excludeHits: [],
       hasher,
-    })
+    }),
   ).toEqual({
     hits: [],
     cursor: null,
@@ -37,7 +37,7 @@ test("less results than page size", async () => {
     search: mockSearch<string>(["a", "b"]),
   });
   expect(
-    await source.load({ cache, cursor: null, excludeHits: [], hasher })
+    await source.load({ cache, cursor: null, excludeHits: [], hasher }),
   ).toEqual({
     hits: ["a", "b"],
     cursor: null,

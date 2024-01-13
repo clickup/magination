@@ -1,6 +1,6 @@
 [@clickup/magination](../README.md) / [Exports](../modules.md) / Magination
 
-# Class: Magination<TSource, THit\>
+# Class: Magination\<TSource, THit\>
 
 Represents a union of multiple pagination sources into one continuous pages
 stream with cursor.
@@ -9,27 +9,31 @@ stream with cursor.
 
 | Name | Type |
 | :------ | :------ |
-| `TSource` | extends [`Source`](Source.md)<`any`\> |
-| `THit` | `TSource` extends [`Source`](Source.md)<infer THit\> ? `THit` : `never` |
+| `TSource` | extends [`Source`](Source.md)\<`any`\> |
+| `THit` | `TSource` extends [`Source`](Source.md)\<infer THit\> ? `THit` : `never` |
 
 ## Constructors
 
 ### constructor
 
-• **new Magination**<`TSource`, `THit`\>(`sources`)
+• **new Magination**\<`TSource`, `THit`\>(`sources`): [`Magination`](Magination.md)\<`TSource`, `THit`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `TSource` | extends [`Source`](Source.md)<`any`\> |
-| `THit` | `TSource` extends [`Source`](Source.md)<`THit`\> ? `THit` : `never` |
+| `TSource` | extends [`Source`](Source.md)\<`any`\> |
+| `THit` | `TSource` extends [`Source`](Source.md)\<`THit`\> ? `THit` : `never` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `sources` | readonly `TSource`[] |
+
+#### Returns
+
+[`Magination`](Magination.md)\<`TSource`, `THit`\>
 
 #### Defined in
 
@@ -39,7 +43,7 @@ stream with cursor.
 
 ### load
 
-▸ **load**(`«destructured»`): `AsyncGenerator`<[`Page`](../interfaces/Page.md)<`THit`\> & { `prevCursor`: ``null`` \| `string` ; `source`: `TSource`  }, `any`, `unknown`\>
+▸ **load**(`«destructured»`): `AsyncGenerator`\<[`Page`](../interfaces/Page.md)\<`THit`\> & \{ `prevCursor`: ``null`` \| `string` ; `source`: `TSource`  }, `any`, `unknown`\>
 
 Returns a finite generator of pages which runs all of the sources in
 parallel and then return a page of resulting hits. Basically, loads the
@@ -76,12 +80,12 @@ hits along with the new cursor.
 | :------ | :------ |
 | `«destructured»` | `Object` |
 | › `cache` | [`Cache`](../interfaces/Cache.md) |
-| › `hasher` | [`Hasher`](../interfaces/Hasher.md)<`THit`\> |
+| › `hasher` | [`Hasher`](../interfaces/Hasher.md)\<`THit`\> |
 | › `cursor` | ``null`` \| `string` |
 
 #### Returns
 
-`AsyncGenerator`<[`Page`](../interfaces/Page.md)<`THit`\> & { `prevCursor`: ``null`` \| `string` ; `source`: `TSource`  }, `any`, `unknown`\>
+`AsyncGenerator`\<[`Page`](../interfaces/Page.md)\<`THit`\> & \{ `prevCursor`: ``null`` \| `string` ; `source`: `TSource`  }, `any`, `unknown`\>
 
 #### Defined in
 

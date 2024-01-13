@@ -1,6 +1,6 @@
 [@clickup/magination](../README.md) / [Exports](../modules.md) / Hasher
 
-# Interface: Hasher<THit\>
+# Interface: Hasher\<THit\>
 
 ## Type parameters
 

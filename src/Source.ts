@@ -16,7 +16,7 @@ export interface SourceOptions<THit> {
   search: (
     cursor: string | null,
     excludeHits: THit[],
-    count: number
+    count: number,
   ) => Promise<Page<THit>>;
 }
 
@@ -32,7 +32,7 @@ export interface SourceOptions<THit> {
 export default class Source<THit> {
   constructor(
     public readonly name: string,
-    private options: SourceOptions<THit>
+    private options: SourceOptions<THit>,
   ) {}
 
   async load({
@@ -50,8 +50,8 @@ export default class Source<THit> {
       typeof this.options.preloadSize === "function"
         ? this.options.preloadSize(offset)
         : typeof this.options.preloadSize === "number"
-        ? this.options.preloadSize
-        : this.options.pageSize + 1; // +1 to efficiently detect whether we have more pages
+          ? this.options.preloadSize
+          : this.options.pageSize + 1; // +1 to efficiently detect whether we have more pages
     let [slotKey, pos] = parseCursor(cursor);
 
     // Load cache slot or create a new empty one.
@@ -70,7 +70,7 @@ export default class Source<THit> {
     pos = Math.min(pos, slot.hits.length);
 
     const excludeHashes = new Set<string>(
-      [...slot.hits.slice(0, pos), ...excludeHits].map((hit) => hasher(hit))
+      [...slot.hits.slice(0, pos), ...excludeHits].map((hit) => hasher(hit)),
     );
 
     // Extract hits from the cache starting from pos to form results page.
@@ -85,7 +85,7 @@ export default class Source<THit> {
       const res = await this.options.search(
         slot.cursor,
         [...slot.hits, ...excludeHits],
-        preloadSize(pos)
+        preloadSize(pos),
       );
       slot.hits.push(...res.hits);
       slot.cursor = res.cursor;
@@ -113,7 +113,7 @@ export default class Source<THit> {
     inoutExcludeHashes: Set<string>,
     hasher: Hasher<THit>,
     cachedHits: THit[],
-    pos: number
+    pos: number,
   ): number {
     while (outHits.length < this.options.pageSize && pos < cachedHits.length) {
       const hit = cachedHits[pos];

@@ -8,7 +8,7 @@ A key-value store which allows to store various metadata for a cursor.
 
 ### read
 
-▸ **read**(`key`): `Promise`<``null`` \| `object`\>
+▸ **read**(`key`): `Promise`\<``null`` \| `object`\>
 
 #### Parameters
 
@@ -18,7 +18,7 @@ A key-value store which allows to store various metadata for a cursor.
 
 #### Returns
 
-`Promise`<``null`` \| `object`\>
+`Promise`\<``null`` \| `object`\>
 
 #### Defined in
 
@@ -28,7 +28,7 @@ ___
 
 ### write
 
-▸ **write**(`key`, `value`): `Promise`<`unknown`\>
+▸ **write**(`key`, `value`): `Promise`\<`unknown`\>
 
 #### Parameters
 
@@ -39,7 +39,7 @@ ___
 
 #### Returns
 
-`Promise`<`unknown`\>
+`Promise`\<`unknown`\>
 
 #### Defined in
 
